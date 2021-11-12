@@ -24,7 +24,6 @@ def create_app():
     
     @app.route('/')
     def run_bot():
-        import os
 
         chrome_options = webdriver.ChromeOptions()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
