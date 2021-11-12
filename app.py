@@ -1,5 +1,4 @@
 
-import sqlalchemy
 from sqlalchemy import create_engine, text
 from flask import Flask, current_app
 from selenium import webdriver
