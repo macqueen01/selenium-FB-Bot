@@ -23,10 +23,16 @@ def create_app():
     
     @app.route('/')
     def run_bot():
+        import os
+
         chrome_options = webdriver.ChromeOptions()
+        chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        chrome_options.add_argument("--headless") # 창을 띄우지 않음
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox") # 샌드박스 보안 비활성화
         prefs = {"profile.default_content_setting_values.notifications" : 2}
         chrome_options.add_experimental_option("prefs",prefs)
-        driver = webdriver.Chrome('./chromedriver',chrome_options=chrome_options)
+        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
         globalURL = 'https://www.messenger.com/t/101210925710184'
         driver.get(globalURL)   
@@ -109,9 +115,9 @@ def create_app():
         
                 else:
                     id = current_app.database.execute(text("SELECT * FROM senders WHERE name = :name"), {'name' : name}).fetchone()['id']
-                    messages = current_app.database.execute(text("SELECT message FROM messages WHERE id = :id"), {'id' : id})
+                    messages = current_app.database.execute(text("SELECT message FROM messages WHERE id = :id"), {'id' : id}).fetchall()
                     for message in container[name]:
-                        if message not in messages:
+                        if message not in [msg[0] for msg in messages]:
                             current_app.database.execute(text("INSERT INTO messages (id, message) VALUES (:id, :message)"), {'id' : id, 'message' : message})
                             if container[name][-1] == message:
                                 driver.get(nameToURL[name])
