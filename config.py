@@ -9,6 +9,6 @@ db = {
     'database': 'fbBot2'
 }
 
-DB_URL = f"mysql+pymysql://{db['user']}:{db['password']}@{db['host']}:{db['port']}/{db['database']}"
+DB_URL = "mysql://b715fbc9127dd4:fcdbcf19@us-cdbr-east-04.cleardb.com/heroku_59572923001aaae"
 EMAIL = 'macqueen01@naver.com'
 PASSWORD = 'Goldfrog1004!'

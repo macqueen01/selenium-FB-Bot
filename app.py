@@ -1,7 +1,7 @@
 
 import sqlalchemy
 from sqlalchemy import create_engine, text
-from flask import Flask, request, render_template, jsonify, current_app
+from flask import Flask, current_app
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -102,7 +102,7 @@ def create_app():
                     urlCheck(driver.current_url)
                     messageBox = driver.switch_to.active_element
                     if debug:
-                        messageBox.send_keys(f"{name}야 메시지 줘서 고마워 ! 지금은 자동 응답기 테스트 중이야 !", Keys.ENTER)
+                        messageBox.send_keys(f"{name}야 메시지 줘서 고마워 ! 지금은 자동 응답기 테스트 중이야, 재우가 곧 답장 줄거야 !", Keys.ENTER)
                     else:
                         messageBox.send_keys(f"{name}야 고마워 ! 주소도 알랴주면 재우가 답장을 할 수 있어 !", Keys.ENTER)
                 
@@ -120,7 +120,7 @@ def create_app():
                                 urlCheck(driver.current_url)
                                 messageBox = driver.switch_to.active_element
                                 if debug:
-                                    messageBox.send_keys(f"{name}야 메시지 줘서 고마워 ! 지금은 자동 응답기 테스트 중이야 !", Keys.ENTER)
+                                    messageBox.send_keys(f"{name}야 메시지 줘서 고마워 ! 지금은 자동 응답기 테스트 중이야, 재우가 곧 답장 줄거야 !", Keys.ENTER)
                                 else:
                                     messageBox.send_keys(f"{name}야 고마워 ! 주소도 알랴주면 재우가 답장을 할 수 있어 !", Keys.ENTER)
                                 time.sleep(2)
