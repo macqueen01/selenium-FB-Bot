@@ -1,6 +1,8 @@
 Flask == 1.1.2
 gunicorn == 20.1.0
-SQLalchemy == 1.4.7
+SQLalchemy == 1.4.27
 selenium == 4.0.0
 mysql-connector-python == 8.0.27
 PyMySQL == 1.0.2
+mysql == 0.0.3
+mysqlclient == 2.0.3
