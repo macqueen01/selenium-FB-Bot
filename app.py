@@ -29,8 +29,6 @@ def create_app():
         chrome_options.add_argument("--headless") # 창을 띄우지 않음
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--no-sandbox") # 샌드박스 보안 비활성화
-        prefs = {"profile.default_content_setting_values.notifications" : 2}
-        chrome_options.add_experimental_option("prefs",prefs)
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
         globalURL = 'https://www.messenger.com/t/101210925710184'
